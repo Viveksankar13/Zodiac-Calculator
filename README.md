@@ -50,12 +50,23 @@ Deployment notes:
   - Use the `uvicorn main:app --host 0.0.0.0 --port $PORT` start command in Render.
   - Add `GEMINI_API_KEY` as an environment variable in Render.
   - Ensure `requirements.txt` is used for dependencies.
+  - This repo includes `render.yaml` and `backend/Procfile` to help Render detect and start the backend service.
 
 - Frontend (Vercel):
   - Deploy the `frontend/` directory to Vercel as a static site.
   - Build command: `npm run build`.
   - Output directory: `dist`.
-  - Set up an environment variable for the backend URL if you deploy backend separately (e.g., `VITE_API_URL=https://your-backend.onrender.com`) and update `vite.config.js` or the frontend's fetch calls to use it.
+  - In Vercel project settings, add an Environment Variable:
+    - `VITE_API_URL=https://your-backend.onrender.com`
+  - The frontend will use `VITE_API_URL` to call the API in production, or fallback to the same origin when unset.
+  - This repo includes `vercel.json` so Vercel can build the frontend from the monorepo `frontend/` folder correctly.
+
+Render & Vercel environment guidance:
+
+- `GEMINI_API_KEY` belongs only on the backend and should never be committed.
+- `backend/.env` is ignored by `.gitignore`; use `backend/.env.example` as a template instead.
+- `VITE_API_URL` should be configured in Vercel if the frontend and backend are deployed separately.
+- For local development, the frontend can continue using relative `/api` URLs through the Vite dev proxy in `frontend/vite.config.js`.
 
 Cleaning performed before publishing:
 

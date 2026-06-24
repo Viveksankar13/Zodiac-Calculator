@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRoute } from "wouter";
+
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? "";
 import { zodiacSigns, calculateZodiacSign } from "@/lib/zodiac-data";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
