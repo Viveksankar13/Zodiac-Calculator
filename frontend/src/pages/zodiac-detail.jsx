@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRoute } from "wouter";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "";
+import { API_BASE_URL } from "@/lib/queryClient";
 import { zodiacSigns, calculateZodiacSign } from "@/lib/zodiac-data";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -81,7 +80,7 @@ export default function ZodiacDetail() {
         ...(urlParams.time && { time: urlParams.time }),
       });
 
-      const response = await fetch(`/api/zodiac/${sign.name}?${fetchParams}`);
+      const response = await fetch(`${API_BASE_URL}/api/zodiac/${sign.name}?${fetchParams}`);
       const data = await response.json();
 
       if (!response.ok) {
