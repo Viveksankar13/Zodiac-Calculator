@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+env/
+.venv/
+venv/
+.pytest_cache/
+.py[cod]
+
+# dotenv
+.env
+
+# Node
+node_modules/
+/dist
+/frontend/dist
+
+# Vite
+*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Build outputs
+build/
+
+# Logs
+logs/
+*.log
+
+# Misc
+coverage/
+*.cover
+coverage.xml
+
+# Generated frontend dist
+frontend/dist/

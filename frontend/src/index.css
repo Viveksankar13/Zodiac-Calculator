@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(230, 40%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(223, 30%, 12%);
+  --muted-foreground: hsl(215, 20%, 75%);
+  --popover: hsl(230, 40%, 5%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(230, 40%, 6%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsla(255, 255%, 255%, 0.08);
+  --input: hsla(255, 255%, 255%, 0.08);
+  --primary: hsl(190, 90%, 50%);
+  --primary-foreground: hsl(230, 40%, 4%);
+  --secondary: hsl(270, 70%, 50%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(320, 80%, 50%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(190, 90%, 50%);
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    background-color: #03050c;
+    color: #ffffff;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  /* Fonts */
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+  
+  .font-space {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Celestial Glassmorphism */
+  .glass-card {
+    background: rgba(10, 14, 30, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
+  }
+  
+  .glass-card-hover:hover {
+    border-color: rgba(6, 182, 212, 0.25);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.15), 0 10px 40px 0 rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Celestial Glows */
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.35);
+  }
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  }
+  .glow-pink {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.35);
+  }
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.35);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+  }
+  .text-glow-purple {
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+  }
+  .text-glow-gold {
+    text-shadow: 0 0 10px rgba(234, 179, 8, 0.6);
+  }
+
+  /* Starry Sky Animations */
+  .stars-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at bottom, #0d1127 0%, #03050c 100%);
+    overflow: hidden;
+  }
+
+  .stars {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: 10vw 20vh #fff, 30vw 10vh #fff, 50vw 40vh #fff, 70vw 25vh #fff, 90vw 15vh #fff,
+                15vw 60vh #fff, 40vw 75vh #fff, 65vw 50vh #fff, 85vw 80vh #fff, 25vw 90vh #fff;
+    opacity: 0.5;
+    animation: twinkle 4s ease-in-out infinite alternate;
+  }
+
+  .stars-medium {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: 5vw 35vh #fff, 20vw 45vh #fff, 45vw 15vh #fff, 60vw 65vh #fff, 80vw 30vh #fff,
+                95vw 70vh #fff, 12vw 85vh #fff, 35vw 55vh #fff, 75vw 95vh #fff, 88vw 5vh #fff;
+    opacity: 0.6;
+    animation: twinkle 6s ease-in-out infinite alternate 1s;
+  }
+
+  .stars-large {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: 8vw 15vh rgba(255,255,255,0.8), 28vw 50vh rgba(255,255,255,0.8), 55vw 75vh rgba(255,255,255,0.8),
+                72vw 12vh rgba(255,255,255,0.8), 82vw 60vh rgba(255,255,255,0.8), 42vw 30vh rgba(255,255,255,0.8);
+    opacity: 0.8;
+    animation: twinkle 8s ease-in-out infinite alternate 2s;
+  }
+
+  /* Nebula Dust Overlay */
+  .nebula-purple {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
+    filter: blur(100px);
+    pointer-events: none;
+  }
+
+  .nebula-blue {
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+    filter: blur(120px);
+    pointer-events: none;
+  }
+
+  /* Twinkle Animation */
+  @keyframes twinkle {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.4; }
+  }
+
+  /* 3D Card Flips */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  /* Spinning Celestial Animations */
+  .animate-spin-slow {
+    animation: spin 120s linear infinite;
+  }
+
+  .animate-spin-medium {
+    animation: spin 60s linear infinite;
+  }
+
+  .animate-spin-reverse-slow {
+    animation: spin-reverse 90s linear infinite;
+  }
+
+  @keyframes spin-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
+  /* Pulsing orbits */
+  .animate-orbit-pulse {
+    animation: orbit-pulse 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes orbit-pulse {
+    0% { transform: scale(0.98); opacity: 0.6; }
+    100% { transform: scale(1.02); opacity: 0.9; }
+  }
+}
