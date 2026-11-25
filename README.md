@@ -73,15 +73,4 @@ Cleaning performed before publishing:
 - Removed generated build files and temporary AI output logs.
 - Added a `.gitignore` to exclude virtual environments, build artifacts, and secrets.
 
-Tips before publishing:
 
-- Remove or rotate any secrets in `backend/.env` before committing.
-- Consider adding a `Procfile` or start script for Render if needed.
-- Add a `LICENSE` file if you want to define repo licensing.
-
-Contact
-
-If you want, I can also:
-- Create a `Procfile` for Render.
-- Add a small GitHub Actions workflow to run linting or tests on push.
-- Prepare environment variable integration examples for Vercel and Render.
